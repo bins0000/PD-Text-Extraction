@@ -1,6 +1,6 @@
 #Author: Nasri Binsaleh
 
-CODING-----------------------------------------------------------------------------------------------------------------------------------------------------------
+# CODING
 
 Get/Fetch the file
 	With the guide from the project description, 
@@ -27,7 +27,6 @@ How to put in a list of list
 	Instinctively, if we start from the first date-time, and put 4 elements after that in together 
 	in the same row, we should get each row from the pdf table. Then,
 	now we can put it in a list of lists with 5 elements to pass into the sql table
-
 	However, I found out that there are missing values to deal with, or double-lines values that mess up
 	this process of adding 5 elements in each row. The data are incorrect. So I had to find another way to
 	put the string in a list of list.
@@ -62,6 +61,7 @@ Connect with sqlite in python
 	using 'sqlite3' module in python, I can connect with sqlite database and use sql command through python easily. 
 
 Create table in sqlite database
+	
 	con = sqlite3.connect('normanpd.db') would connnect to normanpd.db, but if file does not exist, it will also create one.
 	then using .execute('''CREATE TABLE IF NOT EXISTS incidents
                    		(incident_time TEXT,
@@ -73,52 +73,54 @@ Create table in sqlite database
 
 How to see what's in the table
 	since we should look at what's in the table, several sql commands are useful to see if our program works. 
+	
 	'''
 	data=cur.execute('''SELECT * FROM incidents''')
 	for column in data.description:
     		print(column[0])
 	'''
-	the above code chunk can check for the column names in the table. 
+	
+the above code chunk can check for the column names in the table. 
+	
 	'''
 	data=cur.execute('''SELECT * FROM incidents''')
 	for row in data:
     		print(row)
     	'''
-	and this one above checks for the values in the table. 
+and this one above checks for the values in the table. 
 
 As I ran the program several times, but I kept writing data into the same database, the number of incidents from previous run is still there
 	so the data in the database table are cleared every time at the end of the program. 
 
 
-TESTING------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# TESTING
 At first, the simple download test was done to check if the website was connected and the pdf was downloaded. Also to learn how pytest works.
+
 Now, I moved on to try and test the functions
-	The first function is 'fetchincidents', this function download the data from the online pdf into a variable 'data'
-		So I would try to test if the pdf data is successfully obtain and stored.
-		At first, I thought that the data stored in 'data' from .read() would be in str type. so I tested to see if the stored data 
-		are stored, and stored as a string type. but it failed the test, then I realized that it actually stored in bytes format. 
-		So, I changed the condition to compare type(data) to bytes. 
-	The next function is 'extractincidents' function 
-		-In this function, the data are converted into a list of strings, organized into rows, and fixed up. I was testing whether 
-		the data in 'data' are converted into a string and stored in variable 'page'. 
-		-After the data were converted into a string, the string was then put into a list of strings. Then the list of strings are 
-		broken into a list of lists containing strings called 'lines'. Here, I tested if the conversion to the list of string was 
-		successful by comparing if type(lines) is a list. 
-		-The regular expression for the dates were used to split the data into each row of that list of list and stored in 'incidents_list'. 
-		So, I tested if the first string of each row is the 'incident date-time'. 
-		-After fixing up the double-rows, and missing values, all the rows in 'incidents_list' mumst have 5 elements. Therefore, I tested if 
-		each row has 5 elements. 
-		-The report date was also extracted into the list, so it had to be removed. So, the test to check if the right date was removed was done. 
-	After extracting data, then it has to be put in the database. The next function is 'createdb' function.
-		-In this function, the table is created with the headers, so the test was done to check if the table was created with the right 
-		column names. 
-	Then the data was put in the table using 'populatedb' function.
-		-The test for checking if all the data was put in the table was done by comparing the number of incidents in the table with the actual 
-		on from the pdf.
-	The last function is the 'status' function to report the natures and their frequency. 
-		-In this function, the test was done to check if the nature and its corresponding frequency is correct. 
+
+The first function is 'fetchincidents', this function download the data from the online pdf into a variable 'data'
+	
+- So I would try to test if the pdf data is successfully obtain and stored.
+- At first, I thought that the data stored in 'data' from .read() would be in str type. so I tested to see if the stored data are stored, and stored as a string type. but it failed the test, then I realized that it actually stored in bytes format. So, I changed the condition to compare type(data) to bytes. 
+	
+The next function is 'extractincidents' function 
+- In this function, the data are converted into a list of strings, organized into rows, and fixed up. I was testing whether the data in 'data' are converted into a string and stored in variable 'page'. 
+- After the data were converted into a string, the string was then put into a list of strings. Then the list of strings are broken into a list of lists containing strings called 'lines'. Here, I tested if the conversion to the list of string was successful by comparing if type(lines) is a list. 
+- The regular expression for the dates were used to split the data into each row of that list of list and stored in 'incidents_list'. So, I tested if the first string of each row is the 'incident date-time'. 
+- After fixing up the double-rows, and missing values, all the rows in 'incidents_list' mumst have 5 elements. Therefore, I tested if each row has 5 elements. 
+- The report date was also extracted into the list, so it had to be removed. So, the test to check if the right date was removed was done. 
+
+After extracting data, then it has to be put in the database. The next function is 'createdb' function.
+- In this function, the table is created with the headers, so the test was done to check if the table was created with the right column names. 
+
+Then the data was put in the table using 'populatedb' function.
+- The test for checking if all the data was put in the table was done by comparing the number of incidents in the table with the actual on from the pdf.
+
+The last function is the 'status' function to report the natures and their frequency. 
+- In this function, the test was done to check if the nature and its corresponding frequency is correct. 
 		
 
 
    
+
 
