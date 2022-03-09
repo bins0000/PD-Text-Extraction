@@ -1,0 +1,8 @@
+Onintsoa Ramananandroniaina | ony@ou.edu | help me understand some python logic and syntax
+python | https://docs.python.org/3.8/library/sqlite3.html | for SQLite commands
+python | https://docs.python.org/3/library/re.html | for regular expression
+TutorialPoints | https://www.tutorialspoint.com/How-to-extract-date-from-text-using-Python-regular-expression | to understand how some regex works
+StackOverFlow| https://stackoverflow.com/questions/51395590/regex-pattern-to-match-datetime-in-python | same with the above
+
+
+
