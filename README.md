@@ -1,6 +1,7 @@
 ## Author: Nasri Binsaleh
 
 Original repo name: cs5293sp22-project0
+
 This is a python project to extract daily incidents from police department's website and store the extracted text data in sql database.
 
 ## CODING
