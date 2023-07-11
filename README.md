@@ -1,6 +1,9 @@
-#Author: Nasri Binsaleh
+## Author: Nasri Binsaleh
 
-# CODING
+Original repo name: cs5293sp22-project0
+This is a python project to extract daily incidents from police department's website and store the extracted text data in sql database.
+
+## CODING
 
 Get/Fetch the file
 	With the guide from the project description, 
@@ -93,7 +96,7 @@ As I ran the program several times, but I kept writing data into the same databa
 	so the data in the database table are cleared every time at the end of the program. 
 
 
-# TESTING
+## TESTING
 At first, the simple download test was done to check if the website was connected and the pdf was downloaded. Also to learn how pytest works.
 
 Now, I moved on to try and test the functions
